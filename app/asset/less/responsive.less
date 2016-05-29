@@ -1,0 +1,45 @@
+@import '~bootstrap/less/variables.less';
+@import '~bootstrap/less/mixins/responsive-visibility.less';
+@import '~bootstrap/less/responsive-utilities.less';
+
+// Very usefull to embed media or any element with fixed ratio...
+// But in some cases, it messes with layout (ie. vert center)
+// In this case, hard code element's heights (see component/smart/HomeLayout.less@.HomeLayout-drop-zone)
+@import '~bootstrap/less/responsive-embed.less';
+
+@displays: inline, inline-block, block, flex;
+
+.loop-display(@prefix, @counter) when (@counter > 0){
+	.loop-display(@prefix, @counter - 1);
+
+	@display-name: extract(@displays, @counter);
+
+	.visible-@{prefix}-@{display-name}{
+		display: none !important;
+	}
+	.@{prefix} .visible-@{prefix}-@{display-name}{
+		display: @display-name !important;
+	}
+}
+
+
+.loop-stuff(@stuff, @counter) when (@counter > 0){
+	.loop-stuff(@stuff, @counter - 1);
+
+	@stuff-name: extract(@stuff, @counter);
+
+	.@{stuff-name} .hidden-@{stuff-name}{
+		display: none !important;
+	}
+
+	.loop-display(@stuff-name, length(@displays));
+}
+
+@devices: phone, desktop, tablet, mobile;
+.loop-stuff(@devices, length(@devices));
+
+@platforms: mac, windows, linux, ios, android, blackberry, firefoxos;
+.loop-stuff(@platforms, length(@platforms));
+
+@browsers: firefox, chrome, explorer, edge, safari, opera;
+.loop-stuff(@browsers, length(@browsers));

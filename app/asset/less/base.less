@@ -1,0 +1,54 @@
+@import '~bootstrap/less/normalize.less';
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+}
+
+button {
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	padding: 0;
+
+	&:focus {
+		outline: inherit;
+	}
+}
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0
+}
+
+.u-vertical-stretch {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.u-vertical-center,
+.vcenter {
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	position: relative;
+	top: 50%;
+}
+
+.u-hidden,
+.hidden {
+	height: 0 !important;
+	width: 0 !important;
+	overflow: hidden !important;
+	visibility: hidden !important;
+	position: absolute !important;
+	left: -999rem !important;
+	top: -999rem !important;
+	text-indent: -999rem;
+	opacity: 0 !important;
+}
+
+.u-text-center {
+	text-align: center;
+}
