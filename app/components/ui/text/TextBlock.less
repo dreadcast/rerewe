@@ -1,0 +1,64 @@
+@import (reference) '~asset/less/type.less';
+@import (reference) '~asset/less/color.less';
+
+.TextBlock {
+	.sans-serif;
+	color: #4a4a4a;
+
+	h1 {
+		font-size: 38px;
+		font-weight: 100;
+		margin: 16px 0;
+	}
+
+	h2 {
+		font-size: 32px;
+		font-weight: 100;
+		margin: 16px 0 8px;
+	}
+
+	h3 {
+		font-size: 26px;
+		font-weight: 100;
+		margin: 16px 0 8px;
+	}
+
+	h4 {
+		font-size: 23px;
+	}
+
+	h5 {
+		font-size: 20px;
+	}
+
+	h6 {
+		font-size: 18px;
+	}
+
+	p {
+		font-size: 19px;
+
+		& + p {
+			margin-top: 20px;
+		}
+	}
+
+	&.mod-serif {
+		font-family: Georgia;
+	}
+
+	&.mod-mixed {
+		font-family: Georgia;
+
+		h1, h2, h3 {
+			.sans-serif;
+		}
+	}
+
+	a {
+		color: @accent;
+		text-decoration: none;
+		border-bottom: 1px solid mix(@accent, #fff);
+		padding-bottom: 1px;
+	}
+}

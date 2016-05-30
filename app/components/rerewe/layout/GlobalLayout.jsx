@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col } from 'components/ui/grid/Grid.jsx';
 import Header from './header/Header.jsx';
 import childrenType from 'util/propTypes/children';
 
@@ -16,7 +16,12 @@ export default class GlobalLayout extends Component {
 				<Header />
 				<Grid>
 					<Row>
-						<Col>
+						<Col
+							sm={8}
+							smOffset={2}
+							md={6}
+							mdOffset={3}
+						>
 							{this.props.children}
 						</Col>
 					</Row>

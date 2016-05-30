@@ -1,25 +1,39 @@
+@import (reference) '~asset/less/geometry.less';
+
 .Header {
 	background: #f6c806;
-	padding: 20px;
+	padding: 20px 0;
 
 	&-title {
-		margin: 16px 0 0;
-		text-align: center;
+		margin: 0;
 	}
 
 	&-subtitle {
 		display: block;
 		font-size: .5em;
-		margin-top: 8px;
 		font-weight: 100;
 	}
 
 	&-img-holder {
-		margin-bottom: 10px;
+		margin: 5px 0 0;
 		height: 50px;
 		background-image: url('~asset/img/favicon.svg');
 		background-size: contain;
 		background-repeat: no-repeat;
-		background-position: center 0;
+		background-position: 0 bottom;
+	}
+
+	&-menu {
+		margin-top: 16px;
+	}
+
+	@media (max-width: @screen-sm-min) {
+		&-title {
+			text-align: center;
+		}
+		&-img-holder {
+			margin: 0 0 10px;
+			background-position: center 0;
+		}
 	}
 }

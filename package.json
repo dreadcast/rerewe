@@ -2,6 +2,7 @@
 	"name": "rerewe",
 	"description": "React, Redux & Webpack kickstart",
 	"version": "0.0.1",
+	"license": "WTFPL",
 
 	"author": {
 		"name": "Raphael Gully",
@@ -19,7 +20,7 @@
 
 	"scripts": {
 		"dev": "NODE_ENV=dev webpack-dev-server --progress --config webpack.dev.config.js",
-		"prod": "NODE_ENV=production webpack --config webpack.prod.config.js"
+		"build": "NODE_ENV=production webpack --config webpack.prod.config.js"
 	},
 
 	"babel": {
@@ -56,10 +57,12 @@
 		"babel-preset-stage-0": "6.5.0",
 		"babel-preset-react": "6.5.0",
 		"babel-loader": "6.2.4",
-		"eslint": "2.1.0",
+		"eslint": "1.6.0",
 		"eslint-plugin-react": "3.16.1",
 		"eslint-loader": "1.2.1",
 		"file-loader": "0.8.4",
+		"html-loader": "0.4.3",
+		"raw-loader": "0.5.1",
 		"style-loader": "0.12.4",
 		"css-loader": "0.18.0",
 		"less-loader": "2.2.3",
@@ -72,6 +75,9 @@
 		"html-webpack-plugin": "1.6.1",
 		"react-hot-loader": "1.3.0",
 		"webpack": "1.13.1",
-		"webpack-dev-server": "1.14.1"
+		"webpack-dev-server": "1.14.1",
+
+		"react-remarkable": "1.1.1",
+		"markdown-loader": "0.1.7"
 	}
 }

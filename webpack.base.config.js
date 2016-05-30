@@ -6,6 +6,7 @@ var nodeModulesDir = path.resolve('node_modules');
 var webpack = require('webpack');
 var htmlWPPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
+var mdParser = require('./app/util/markdown.js');
 
 var config = {
 	entry: {
@@ -13,6 +14,7 @@ var config = {
 			'webpack/hot/dev-server',
 			path.resolve('./app/index.jsx')
 		],
+		common: require('./common.js'),
 	},
 	output: {
 		path: path.resolve('build'),
@@ -58,15 +60,18 @@ var config = {
 				loader: 'style-loader!css-loader!postcss-loader'
 			}, {
 				test   : /\.(jpg|png|gif|ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-				loader : 'file'
-			}
+				loader : 'file?name=[name].[ext]?[hash]'
+			}, {
+				test: /\.md$/,
+				loader: 'html!markdown',
+			},
 		],
 		postcss: [
 			autoprefixer({
 				browsers: ['last 2 versions']
 			})
 		]
-	}
+	},
 };
 
 module.exports = config;

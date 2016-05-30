@@ -5,6 +5,7 @@
 		<title>Rerewe</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="favicon" type="image/png" href="/favicon.png" />
 	</head>
 	<body>
 		<div id="content"></div>
@@ -12,7 +13,7 @@
 		{% if (o.htmlWebpackPlugin.options.dev) { %}
 			<script src="http://localhost:8080/webpack-dev-server.js"></script>
 		{% } %}
-		
+
 		{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
 			{% if (o.htmlWebpackPlugin.options.chunksToInclude.indexOf(chunk) >= 0) { %}
 				<script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
