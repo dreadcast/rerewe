@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RootInstanceProvider } from 'react-hot-loader/Injection';
 import { Provider } from 'react-redux';
 import { store } from 'modules/store.js';
 import Routes from 'modules/routing/routes.jsx';
@@ -23,6 +22,8 @@ var rootElement = (
 var root = ReactDOM.render(rootElement, document.getElementById('content'));
 
 if (process.env.NODE_ENV) {
+	var { RootInstanceProvider } = require('react-hot-loader/Injection');
+
 	RootInstanceProvider.injectProvider({
 		getRootInstances: () => {
 			return [root];
