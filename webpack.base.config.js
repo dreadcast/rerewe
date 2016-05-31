@@ -6,7 +6,6 @@ var nodeModulesDir = path.resolve('node_modules');
 var webpack = require('webpack');
 var htmlWPPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
-var mdParser = require('./app/util/markdown.js');
 
 var config = {
 	entry: {
@@ -39,14 +38,14 @@ var config = {
 		eslint: {
 			configFile: './.eslintrc'
 		},
-		// preLoaders: [
-		// 	{
-		// 		test: /\.(js|jsx)$/,
-		// 		exclude: nodeModulesDir,
-		// 		include: /app/,
-		// 		loader: 'eslint-loader'
-		// 	}
-		// ],
+		preLoaders: [
+			{
+				test: /\.(js|jsx)$/,
+				exclude: nodeModulesDir,
+				include: /app/,
+				loader: 'eslint-loader'
+			}
+		],
 		loaders: [
 			{
 				test: /\.(js|jsx)$/,

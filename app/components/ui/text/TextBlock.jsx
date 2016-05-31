@@ -6,7 +6,7 @@ import './TextBlock.less';
 export default class TextBlock extends Component {
 	static propTypes = {
 		children: childrenType,
-		html: PropTypes.string,
+		className: PropTypes.string,
 	}
 
 	render () {
