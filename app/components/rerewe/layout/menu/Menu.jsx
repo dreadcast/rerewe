@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import './Menu.less';
 
 export default class Menu extends Component {
@@ -7,40 +7,40 @@ export default class Menu extends Component {
 		return (
 			<ul className='Menu'>
 				<li className='Menu-item'>
-					<Link
+					<NavLink
 						className='Menu-link'
 						activeClassName='selected'
 						to='/'
 					>
 						Home
-					</Link>
+					</NavLink>
 				</li>
 				<li className='Menu-item'>
-					<Link
+					<NavLink
 						className='Menu-link'
 						activeClassName='selected'
 						to='/about'
 					>
 						About
-					</Link>
+					</NavLink>
 				</li>
 				<li className='Menu-item'>
-					<Link
+					<NavLink
 						className='Menu-link'
 						activeClassName='selected'
 						to='/markdown'
 					>
 						Markdown example
-					</Link>
+					</NavLink>
 				</li>
 				<li className='Menu-item'>
-					<Link
+					<NavLink
 						className='Menu-link'
 						activeClassName='selected'
 						to='/markdown/readme'
 					>
 						Readme
-					</Link>
+					</NavLink>
 				</li>
 			</ul>
 		);

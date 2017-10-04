@@ -1,69 +1,139 @@
 {
-	"parser": "babel-eslint",
+  "parser": "babel-eslint",
 
-	"env": {
-		"browser": true,
-		"es6": true
-	},
+  "env": {
+    "browser": true,
+    "es6": true
+  },
 
-	"plugins": [
-		"react"
-	],
+  "plugins": [
+    "react"
+  ],
 
-	"ecmaFeatures": {
-		"jsx": true,
-		"arrowFunctions": true,
-		"binaryLiterals": true,
-		"blockBindings": true,
-		"classes": true,
-		"defaultParams": true,
-		"destructuring": true,
-		"forOf": true,
-		"generators": true,
-		"modules": true,
-		"objectLiteralComputedProperties": true,
-		"objectLiteralDuplicateProperties": true,
-		"objectLiteralShorthandMethods": true,
-		"objectLiteralShorthandProperties": true,
-		"octalLiterals": true,
-		"regexUFlag": true,
-		"regexYFlag": true,
-		"restParams": true,
-		"spread": true,
-		"superInFunctions": true,
-		"templateStrings": true,
-		"unicodeCodePointEscapes": true,
-		"globalReturn": true
-	},
+  "ecmaFeatures": {
+    "jsx": true,
+    "arrowFunctions": true,
+    "binaryLiterals": true,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParams": true,
+    "destructuring": true,
+    "forOf": true,
+    "generators": true,
+    "modules": true,
+    "objectLiteralComputedProperties": true,
+    "objectLiteralDuplicateProperties": true,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "octalLiterals": true,
+    "regexUFlag": true,
+    "regexYFlag": true,
+    "restParams": true,
+    "spread": true,
+    "superInFunctions": true,
+    "templateStrings": true,
+    "unicodeCodePointEscapes": true,
+    "globalReturn": true
+  },
 
-	"rules": {
-		"consistent-return": 0,
-		"new-cap": 0,
-		"strict": 0,
-		"quotes": [2, "single"],
-		"no-mixed-requires": 0,
-		"no-mixed-spaces-and-tabs": 1,
+  "rules": {
+    "jsx-quotes": [1, "prefer-single"],
+    "consistent-return": 0,
+    "new-cap": 0,
+    "strict": 0,
+    "quotes": [2, "single"],
+    "no-mixed-requires": 0,
+    "no-mixed-spaces-and-tabs": 1,
+    "indent": [2, "tab", {
+      "SwitchCase": 1
+    }],
+    "no-whitespace-before-property": 2,
 
-		"valid-jsdoc": [2, {
-			"prefer": {
-				"returns": "return"
-			}
-		}],
+    "computed-property-spacing": [2, "never"],
+    "key-spacing": [2, { "mode": "strict" }],
+    "object-curly-newline": [1, {
+      "minProperties": 3,
+      "multiline": true,
+      "consistent": true
+    }],
+    # Conflicts with coma-dangle :
+    "object-curly-spacing": [1, "always"],
+    "comma-dangle": [1, {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline"
+    }],
+    "semi-spacing": [2, {
+      "before": false,
+      "after": true
+    }],
+    "no-dupe-keys": 1,
+    "rest-spread-spacing": [1, "never"],
+    "prefer-destructuring": [1, {
+      "array": true,
+      "object": true
+    }],
+    "object-shorthand": [1, "always"],
 
-		"react/no-multi-comp": 0,
-		"react/no-did-mount-set-state": 0,
+    "no-underscore-dangle": [1, { "allowAfterThis": false }],
+    # Need eslint 4+ : "no-underscore-dangle": [2, { "allowAfterThis": false, "enforceInMethodNames": false }],
+    # Need eslint 4+ :
+    "comma-spacing": [1, { "before": false, "after": true }],
+    "comma-style": [2, "last"],
+    "keyword-spacing": [1, { "after": true, "before": true }],
+    "max-depth": [2, 5],
+    "max-len": [1, {
+      "code": 90,
+      "tabWidth": 4,
+      "ignoreRegExpLiterals": true,
+      "ignoreStrings": true,
+      "ignoreComments": true,
+      "ignorePattern": "^import\\s(\\{\\s)?([A-Z|a-z]+)"
+    }],
 
-		"react/jsx-boolean-value": 1,
-		"react/jsx-no-undef": 1,
-		"react/jsx-quotes": [1, "single"],
-		"react/jsx-uses-react": 1,
-		"react/jsx-uses-vars": 1,
-		"react/no-did-update-set-state": 1,
-		"react/no-unknown-property": 1,
-		"react/prop-types": 1,
-		"react/react-in-jsx-scope": 1,
-		"react/self-closing-comp": 1,
-		"react/sort-comp": 1,
-		"react/wrap-multilines": 1
-	}
+    "nonblock-statement-body-position": [2, "beside"],
+
+    "one-var-declaration-per-line": [2, "always"],
+    "one-var": [2, "never"],
+    "no-useless-concat": 2,
+    "no-unused-vars": [1, {
+      "args": "none",
+      "ignoreRestSiblings": true
+    }],
+    "no-undef": 1,
+
+    "no-cond-assign": 2,
+
+    "no-duplicate-case": 2,
+
+    # Need eslint 4+ : "func-call-spacing": [2, "never"],
+    "max-nested-callbacks": [2, 4],
+    "no-constant-condition": 2,
+
+    "no-nested-ternary": 2,
+    "yoda": [2, "never"],
+    "no-unneeded-ternary": 2,
+
+    "valid-jsdoc": [2, {
+      "prefer": {
+        "returns": "return"
+      }
+    }],
+
+    "react/no-multi-comp": 0,
+    "react/no-did-mount-set-state": 0,
+
+    "react/jsx-curly-spacing": [2, "never"],
+    "react/jsx-boolean-value": 1,
+    "react/jsx-no-undef": 1,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-unknown-property": 1,
+    "react/prop-types": 1,
+    "react/react-in-jsx-scope": 1,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/jsx-wrap-multilines": 1
+  }
 }

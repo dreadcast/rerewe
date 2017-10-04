@@ -14,6 +14,4 @@ module.exports = [
 	'classnames',
 	'lodash',
 	'immutable',
-	'velocity-animate',
-	'superagent-bluebird-promise'
 ];

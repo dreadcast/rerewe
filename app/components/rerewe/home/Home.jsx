@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import Layout from 'components/rerewe/layout/GlobalLayout.jsx';
 import TextBlock from 'components/ui/text/TextBlock.jsx';
 
@@ -9,7 +9,8 @@ export default class Home extends Component {
 				<TextBlock className='Home mod-mixed'>
 					<h1>Home</h1>
 					<p>
-						This repo was made to quickly start a Webpack, React & Redux project.
+						This repo was made to quickly start a Webpack,
+						React & Redux project.
 					</p>
 					<h2>Why this one?</h2>
 					<p>

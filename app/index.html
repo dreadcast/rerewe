@@ -10,14 +10,8 @@
 	<body>
 		<div id="content"></div>
 
-		{% if (o.htmlWebpackPlugin.options.dev) { %}
-			<script src="http://localhost:8080/webpack-dev-server.js"></script>
-		{% } %}
-
-		{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
-			{% if (o.htmlWebpackPlugin.options.chunksToInclude.indexOf(chunk) >= 0) { %}
-				<script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
-			{% } %}
-		{% } %}
+		<% if (htmlWebpackPlugin.options.dev) { %>
+			<script src="/webpack-dev-server.js"></script>
+		<% } %>
 	</body>
 </html>

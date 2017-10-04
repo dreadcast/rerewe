@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Grid, Row, Col } from 'components/ui/grid/Grid.jsx';
 import Header from './header/Header.jsx';
-import childrenType from 'util/propTypes/children';
+import children from 'util/propTypes/children';
 
 import './GlobalLayout.less';
 
 export default class GlobalLayout extends Component {
 	static propTypes = {
-		children: childrenType
+		children,
 	}
 
 	render () {

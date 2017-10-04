@@ -1,7 +1,8 @@
+/*global process require */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { store } from 'modules/store.js';
+import store from 'modules/store.js';
 import Routes from 'modules/routing/routes.jsx';
 
 // reset default css
@@ -11,7 +12,7 @@ import 'asset/less/base.less';
 import 'asset/less/typography.less';
 
 import 'asset/img/favicon.png';
-import 'file?name=[name].[ext]!asset/img/favicon.ico';
+import 'file-loader?name=[name].[ext]!asset/img/favicon.ico';
 
 var rootElement = (
 	<Provider store={store}>
@@ -27,6 +28,6 @@ if (process.env.NODE_ENV) {
 	RootInstanceProvider.injectProvider({
 		getRootInstances: () => {
 			return [root];
-		}
+		},
 	});
 }

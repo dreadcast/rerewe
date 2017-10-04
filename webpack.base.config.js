@@ -1,33 +1,35 @@
 'use strict';
 
-var ROOT = process.env.PWD;
-var path = require('path');
-var nodeModulesDir = path.resolve('node_modules');
-var webpack = require('webpack');
-var htmlWPPlugin = require('html-webpack-plugin');
-var autoprefixer = require('autoprefixer');
+const Path = require('path');
+const nodeModulesDir = Path.resolve('node_modules');
+const webpack = require('webpack');
+const htmlWPPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
-var config = {
+const config = {
 	entry: {
-		app: [
-			'webpack/hot/dev-server',
-			path.resolve('./app/index.jsx')
-		],
+		app: Path.resolve('./app/index.jsx'),
 		common: require('./common.js'),
 	},
 	output: {
-		path: path.resolve('build'),
+		path: Path.resolve('build'),
 		filename: '[name].js?[hash]',
 		chunkFilename: '[name].js?[hash]',
 		publicPath: '/',
 	},
 	resolve: {
-		extensions: ['', '.js'],
-		root: path.resolve('app'),
-		moduleDirectories: [nodeModulesDir]
+		// extensions: ['', '.js'],
+		modules: [
+			Path.resolve(__dirname + '/app'),
+			nodeModulesDir,
+		],
 	},
 	plugins: [
-		new webpack.optimize.CommonsChunkPlugin('common', 'common.js?[hash]'),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'common',
+			filename: 'common.js?[hash]',
+			minChunks: 2,
+		}),
 		new htmlWPPlugin({
 			chunksToInclude: ['app', 'common'],
 			template: 'app/index.html',
@@ -35,41 +37,67 @@ var config = {
 		})
 	],
 	module: {
-		eslint: {
-			configFile: './.eslintrc'
-		},
-		preLoaders: [
+		rules: [
 			{
 				test: /\.(js|jsx)$/,
 				exclude: nodeModulesDir,
+				enforce: 'pre',
 				include: /app/,
-				loader: 'eslint-loader'
-			}
-		],
-		loaders: [
+				loader: 'eslint-loader',
+			},
 			{
 				test: /\.(js|jsx)$/,
-				loaders: ['react-hot', 'babel'],
-				exclude: nodeModulesDir
+				use: [
+					{
+						loader: 'babel-loader',
+						options: {
+							presets: ['react', 'es2015', 'stage-0'],
+						},
+					},
+				],
+				exclude: nodeModulesDir,
 			}, {
-				test:   /\.less$/,
-				loader: 'style-loader!css-loader!postcss-loader!less-loader?strictMath'
+				test: /\.less$/,
+				use: [
+					{ loader: 'style-loader' },
+					{ loader: 'css-loader' },
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: loader => [require('autoprefixer')()],
+						},
+					},
+					{ loader: 'less-loader' },
+				],
 			}, {
-				test:   /\.css$/,
-				loader: 'style-loader!css-loader!postcss-loader'
+				test: /\.css$/,
+				use: [
+					{ loader: 'style-loader' },
+					{ loader: 'css-loader' },
+					{
+						loader: 'postcss-loader',
+						options: {
+							// sourceMap: true,
+							plugins: loader => [require('autoprefixer')()],
+						},
+					},
+				],
 			}, {
-				test   : /\.(jpg|png|gif|ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-				loader : 'file?name=[name].[ext]?[hash]'
+				test: /\.(jpg|ico|cur|png|gif|ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+				use: {
+					loader: 'file-loader',
+					options: {
+						name: '[name]_[hash].[ext]',
+					},
+				},
 			}, {
 				test: /\.md$/,
-				loader: 'html!markdown',
+				use: [
+					{ loader: 'html-loader' },
+					{ loader: 'markdown-loader' },
+				],
 			},
 		],
-		postcss: [
-			autoprefixer({
-				browsers: ['last 2 versions']
-			})
-		]
 	},
 };
 

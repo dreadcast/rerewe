@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import clone from 'lodash/clone';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import childrenType from 'util/propTypes/children';
 import './TextBlock.less';
 
@@ -10,12 +10,17 @@ export default class TextBlock extends Component {
 	}
 
 	render () {
-		var {children, className, ...props} = this.props;
+		const {
+			children,
+			className,
+			...props
+		} = this.props;
+
 		props.className = 'TextBlock ' + className;
 
-		if(typeof children == 'string') {
+		if (typeof children == 'string') {
 			props.dangerouslySetInnerHTML = {
-				__html: children
+				__html: children,
 			}
 
 			return (

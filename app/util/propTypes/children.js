@@ -1,9 +1,7 @@
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 
-const Children = PropTypes.oneOfType([
+export default PropTypes.oneOfType([
 	PropTypes.node,
 	PropTypes.string,
 	PropTypes.element,
 ]);
-
-export default Children;

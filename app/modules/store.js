@@ -1,18 +1,21 @@
-import { compose, createStore, combineReducers, applyMiddleware } from 'redux';
-import { browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-const reducers = combineReducers({
-	//...reducers,
-	routing: routerReducer
-});
-// Add the reducer to your store on the `routing` key
-export const store = createStore(
-	reducers,
-	window.devToolsExtension ? window.devToolsExtension() : f => f,
-	applyMiddleware(thunkMiddleware)
-);
+import root from 'modules/RootReducer.js';
+import history from './routing/history';
+import { routerMiddleware } from 'react-router-redux';
 
-// Create an enhanced history that syncs navigation events with the store
-export const history = syncHistoryWithStore(browserHistory, store);
+function configureStore(initialState) {
+	const middlewares = applyMiddleware(
+		thunkMiddleware,
+		routerMiddleware(history),
+	);
+
+	return createStore(root, initialState, compose(middlewares,
+		window.devToolsExtension ? window.devToolsExtension() : f => f
+	));
+}
+
+const store = configureStore();
+
+export default store;
